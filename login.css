@@ -240,32 +240,39 @@ span{
     }
 }
 
-/* Desktop layout (same as your current) */
-.image {
+/* This keeps SVG + Title + Subtitle perfectly aligned on all screens */
+.auth-card {
     display: flex;
-    justify-content: center;
-    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; /* Tight spacing */
 }
 
-/* Mobile Responsive Fix */
+/* Mobile Responsive */
 @media (max-width: 600px) {
-
     .image {
-        margin-top: 10px; /* Gap kam */
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
     }
 
     .image svg {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
     }
 
     .auth-card {
-        margin-top: 10px; /* Tony heading ke thoda kareeb */
+        margin-top: 8px; /* Tony ke bilkul paas */
+        text-align: center;
     }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .auth-card h1 {
+        font-size: 30px; /* Mobile-friendly */
+    }
+
+    .auth-card p {
+        font-size: 14px; /* Subtitle readable */
     }
 }
+
+
