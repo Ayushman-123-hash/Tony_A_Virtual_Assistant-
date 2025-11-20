@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tony A Virtual Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Tony <small>Virtual Assistant</small></div>
+    <div class="session">Logged in as <span id="userLabel"></span>
+      <button id="logoutBtn" class="small">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="assistant">
+      <h2>Hi — I'm <span id="assistantName">Tony</span></h2>
+      <p id="status">Click the mic and speak, or type a command below.</p>
+
+      <div class="controls">
+        <button id="micBtn" title="Toggle microphone">🎙️ <span id="micText">Start Listening</span></button>
+        <button id="showHistoryBtn">📜 Show History</button>
+        <button id="clearHistoryBtn">🗑️ Clear History</button>
+      </div>
+
+      <div class="response">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" class="robot" alt="robot" />
+        <div id="transcript" class="bubble typewriter">—</div>
+      </div>
+
+      <!-- English Suggestions Buttons -->
+      <div class="suggestions">
+        <button class="sug">🕒 Time</button>
+        <button class="sug">📅 Date</button>
+        <button class="sug">🌐 Open Google</button>
+        <button class="sug">🎵 Play Song</button>
+      </div>
+
+      <label class="manual">Or type command:
+        <input id="manualInput" placeholder="e.g. time | open youtube | play despacito" />
+      </label>
+      <div class="row center-row">
+        <button id="sendManual">Send</button>
+      </div>
+    </section>
+
+    <aside id="historyPanel" class="history hidden">
+      <h3>Command History</h3>
+      <ul id="historyList"></ul>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
