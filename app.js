@@ -1,7 +1,7 @@
 // Main assistant logic - Full Smart English Mode (Female voice chosen)
 // Session key: tony_session
 const session = JSON.parse(localStorage.getItem('tony_session') || 'null');
-if(!session){ location.href = 'main.html'; }
+if(!session){ location.href = 'index.html'; }
 
 document.getElementById('userLabel').textContent = session.user;
 
@@ -16,7 +16,12 @@ const manualInput = document.getElementById('manualInput');
 const sendManual = document.getElementById('sendManual');
 const logoutBtn = document.getElementById('logoutBtn');
 
-logoutBtn?.addEventListener('click', ()=>{ localStorage.removeItem('tony_session'); location.href='main.html'; });
+logoutBtn?.addEventListener('click', ()=>{ document.body.style.opacity = "0";
+  setTimeout(()=>{
+    localStorage.removeItem('tony_session'); 
+    location.href='index.html'; 
+  },500);
+});
 
 const STORAGE_KEY = `tony_history_${session.user}`;
 
@@ -229,7 +234,7 @@ function processCommand(raw){
     openURL('https://web.whatsapp.com');
     return;
   }
-  if(message.includes('whatsapp')){
+  if(message.includes('instagram')){
     show('Opening Instagram Web','Opening Instagram Web');
     openURL('https://www.instagram.com/');
     return;
