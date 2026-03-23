@@ -242,4 +242,37 @@ span{
     }
 }
 
+@media (max-width: 600px) {
+
+  .auth-body {
+    position: static;
+    height: auto;
+    padding: 20px;
+  }
+
+  .box {
+    position: static;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .image {
+    margin-top: 30px;
+  }
+
+  .auth-card {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .auth-card h1 {
+    font-size: 28px;
+  }
+
+  .auth-card p {
+    font-size: 14px;
+  }
+
+}
 
