@@ -42,7 +42,13 @@ showHistoryBtn.addEventListener('click', ()=>{ historyPanel.classList.toggle('hi
 clearHistoryBtn.addEventListener('click', ()=>{ if(confirm('Clear all history?')){ saveHistory([]); renderHistory(); speak('History cleared'); } });
 
 sendManual.addEventListener('click', ()=>{ const t = manualInput.value.trim(); if(!t)return; processCommand(t); manualInput.value=''; });
-manualInput.addEventListener('keydown',(e)=>{ if(e.key==='Enter'){ sendManual.click(); } });
+manualInput.addEventListener('keydown',(e)=>{
+  if(e.key==='Enter'){
+    e.preventDefault();
+    sendManual.click();
+    manualInput.blur();
+  }
+});
 
 // female voice selection helper
 let preferredVoice = null;
@@ -93,8 +99,12 @@ function setupSuggestions(){
 
 // typewriter helper
 function typeWrite(el, text, i=0){
-  el.textContent = text.substring(0,i);
-  if(i < text.length) setTimeout(()=>typeWrite(el, text, i+1), 25);
+  el.textContent = text.substring(0,i) + "|";
+  if(i < text.length){
+    setTimeout(()=>typeWrite(el, text, i+1), 20);
+  } else {
+    el.textContent = text;
+  }
 }
 
 // Quick helper to open URLs
@@ -259,7 +269,16 @@ function processCommand(raw){
   }
 
   // default: search web
-  show('🔎 Searching: '+raw, 'I did not understand. Searching the web for '+raw);
+  const replies = [
+  "Hmm… let me search that for you",
+  "Interesting, checking the web",
+  "I got you, searching now",
+  "Let me find that quickly"
+];
+
+const random = replies[Math.floor(Math.random()*replies.length)];
+
+show('🔎 ' + random + ': ' + raw, random);
   openURL('https://www.google.com/search?q='+encodeURIComponent(raw));
 }
 
@@ -273,7 +292,16 @@ ensureVoiceReady(()=>{
 });
 setupSuggestions();
 document.addEventListener('DOMContentLoaded', ()=>{
-  ensureVoiceReady(()=> speak('Hello boss! Tony here. How can I help?'));
+  ensureVoiceReady(()=>{
+    const hour = new Date().getHours();
+    let greet = "Hello";
+
+    if(hour < 12) greet = "Good morning";
+    else if(hour < 18) greet = "Good afternoon";
+    else greet = "Good evening";
+
+    speak(`${greet} ${session.user}. Tony is ready.`);
+  });
 });
 
 // init recognition + render history
