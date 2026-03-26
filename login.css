@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     padding: 0;
@@ -281,21 +282,22 @@ span{
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 40px;
+  /* padding-top: 20px; */
   height: auto;
   position: static;
 }
 
 .image {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .auth-card {
   text-align: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .box {
   position: static;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin-bottom: 20px;
 }
